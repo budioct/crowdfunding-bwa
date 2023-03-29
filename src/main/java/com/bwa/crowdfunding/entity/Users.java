@@ -1,11 +1,11 @@
 package com.bwa.crowdfunding.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.FieldNameConstants;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -22,7 +22,7 @@ import java.util.List;
 public class Users {
 
     @Id
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id_user", nullable = false)
     @GeneratedValue(generator = "seq_generator_users")
     private int iduser;
     @Column(name = "name", nullable = false, length = 50)
@@ -44,8 +44,11 @@ public class Users {
     @Column(name = "update_at")
     private LocalDateTime update_at;
 
-    //@OneToMany(mappedBy = "usersid")
-    //private List<Campaign> campaign;
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @FieldNameConstants.Exclude
+    @OneToMany(mappedBy = "users")
+    private List<Campaign> campaignList = new ArrayList<>();
 
     //@OneToMany(mappedBy = "usersid")
     //private List<Transaction> transaction;
