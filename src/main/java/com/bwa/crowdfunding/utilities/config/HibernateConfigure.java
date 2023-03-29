@@ -1,5 +1,6 @@
 package com.bwa.crowdfunding.utilities.config;
 
+import com.bwa.crowdfunding.entity.Campaign;
 import com.bwa.crowdfunding.entity.Users;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -21,7 +22,8 @@ public class HibernateConfigure {
 
             MetadataSources metadataSources = new MetadataSources(registry);
 
-            metadataSources.addAnnotatedClass(Users.class);
+            metadataSources.addAnnotatedClass(Users.class)
+                    .addAnnotatedClass(Campaign.class);
 
             ourSessionFactory = metadataSources
                     .buildMetadata()

@@ -11,15 +11,44 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-//@Entity
+@Entity
+@Table(name = "campaign", schema = "jointable")
+@SequenceGenerator(
+        name = "seq_generator_campaign",
+        schema = "generator",
+        allocationSize = 1,
+        sequenceName = "seq_campaign",
+        initialValue = 1)
 public class Campaign {
 
-//    @Id
+    @Id
+    @Column(name = "id_campaign", nullable = false)
+    @GeneratedValue(generator = "seq_generator_campaign")
     private int idcampaign;
+    @Column(name = "name", nullable = false)
+    private String name;
+    @Column(name = "shortdescription")
+    private String shortdescription;
+    @Column(name = "description")
+    private String description;
+    @Column(name = "goalamount")
+    private int goalamount;
+    @Column(name = "currentamount")
+    private int currentamount;
+    @Column(name = "perks")
+    private String perks;
+    @Column(name = "backercount")
+    private int backercount;
+    @Column(name = "slug")
+    private String slug;
+    @Column(name = "create_at")
+    private LocalDateTime create_at;
+    @Column(name = "update_at")
+    private LocalDateTime update_at;
 
-//    @ManyToOne
-//    @JoinColumn(name="userid")
-    private Users usersid;
+    @ManyToOne
+    @JoinColumn(name = "users_id")
+    private Users users;
 
 //    @OneToMany(mappedBy = "campaignid")
 //    private List<CampaignImages>  campaignimages;
@@ -27,16 +56,6 @@ public class Campaign {
 //    @OneToMany(mappedBy = "campaignid")
 //    private List<Transaction> transaction;
 
-    private String name;
-    private String shortdescription;
-    private String description;
-    private int goalamount;
-    private int currentamount;
-    private String perks;
-    private int backercount;
-    private String slug;
-    private LocalDateTime create_at;
-    private LocalDateTime update_at;
 
 
 }
