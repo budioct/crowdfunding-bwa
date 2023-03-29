@@ -10,19 +10,19 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Entity
+//@Entity
 public class Transaction {
 
-    @Id
+//    @Id
     private int idtransaction;
 
-    @ManyToOne
-    @JoinColumn(name= "campaignid")
-    private Campaign campaignid;
+//    @ManyToOne
+//    @JoinColumn(name= "campaignid")
+//    private Campaign campaignid;
 
-    @ManyToOne
-    @JoinColumn(name= "usersid")
-    private Users usersid;
+//    @ManyToOne
+//    @JoinColumn(name= "usersid")
+//    private Users usersid;
     private int amount;
     private String status;
     private String code;

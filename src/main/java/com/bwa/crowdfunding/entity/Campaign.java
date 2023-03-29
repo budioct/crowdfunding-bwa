@@ -11,21 +11,21 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Entity
+//@Entity
 public class Campaign {
 
-    @Id
+//    @Id
     private int idcampaign;
 
-    @ManyToOne
-    @JoinColumn(name="userid")
+//    @ManyToOne
+//    @JoinColumn(name="userid")
     private Users usersid;
 
-    @OneToMany(mappedBy = "campaignid")
-    private List<CampaignImages>  campaignimages;
+//    @OneToMany(mappedBy = "campaignid")
+//    private List<CampaignImages>  campaignimages;
 
-    @OneToMany(mappedBy = "campaignid")
-    private List<Transaction> transaction;
+//    @OneToMany(mappedBy = "campaignid")
+//    private List<Transaction> transaction;
 
     private String name;
     private String shortdescription;
