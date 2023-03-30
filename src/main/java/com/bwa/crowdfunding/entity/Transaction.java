@@ -35,12 +35,13 @@ public class Transaction {
     @Column(name = "update_at")
     private LocalDateTime update_at;
 
-    //    @ManyToOne
-//    @JoinColumn(name= "campaignid")
-//    private Campaign campaignid;
-
     @ManyToOne
     @JoinColumn(name= "id_user")
     private Users users;
+
+    @ManyToOne
+    @JoinColumn(name = "id_campaign")
+    private Campaign campaigns;
+
 
 }

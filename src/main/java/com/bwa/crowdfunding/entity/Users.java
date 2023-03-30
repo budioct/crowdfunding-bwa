@@ -50,7 +50,6 @@ public class Users {
     @OneToMany(mappedBy = "users")
     private List<Campaign> campaignList = new ArrayList<>();
 
-
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @FieldNameConstants.Exclude

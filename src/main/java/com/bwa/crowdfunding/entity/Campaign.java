@@ -1,11 +1,11 @@
 package com.bwa.crowdfunding.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.FieldNameConstants;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -50,11 +50,18 @@ public class Campaign {
     @JoinColumn(name = "id_user")
     private Users users;
 
-//    @OneToMany(mappedBy = "campaignid")
-//    private List<CampaignImages>  campaignimages;
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @FieldNameConstants.Exclude
+    @OneToMany(mappedBy = "campaigns")
+    private List<Transaction> transactionList = new ArrayList<>();
 
-//    @OneToMany(mappedBy = "campaignid")
-//    private List<Transaction> transaction;
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @FieldNameConstants.Exclude
+    @OneToMany(mappedBy = "campaigns")
+    private List<CampaignImages> campaignImagesList = new ArrayList<>();
+
 
 
 
