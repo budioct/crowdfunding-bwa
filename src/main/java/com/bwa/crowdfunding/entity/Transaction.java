@@ -10,23 +10,37 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-//@Entity
+@Entity
+@Table(name = "transaction", schema = "jointable")
+@SequenceGenerator(
+        name = "seq_generator_transaction",
+        schema = "generator",
+        allocationSize = 1,
+        sequenceName = "seq_transaction",
+        initialValue = 1)
 public class Transaction {
 
-//    @Id
+    @Id
+    @Column(name = "id_transaction", nullable = false)
+    @GeneratedValue(generator = "seq_generator_transaction")
     private int idtransaction;
+    @Column(name = "amount")
+    private int amount;
+    @Column(name = "status")
+    private String status;
+    @Column(name = "code")
+    private String code;
+    @Column(name = "create_at")
+    private LocalDateTime create_at;
+    @Column(name = "update_at")
+    private LocalDateTime update_at;
 
-//    @ManyToOne
+    //    @ManyToOne
 //    @JoinColumn(name= "campaignid")
 //    private Campaign campaignid;
 
-//    @ManyToOne
-//    @JoinColumn(name= "usersid")
-//    private Users usersid;
-    private int amount;
-    private String status;
-    private String code;
-    private LocalDateTime create_at;
-    private LocalDateTime update_at;
+    @ManyToOne
+    @JoinColumn(name= "id_user")
+    private Users users;
 
 }

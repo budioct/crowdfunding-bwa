@@ -47,7 +47,7 @@ public class Campaign {
     private LocalDateTime update_at;
 
     @ManyToOne
-    @JoinColumn(name = "users_id")
+    @JoinColumn(name = "id_user")
     private Users users;
 
 //    @OneToMany(mappedBy = "campaignid")

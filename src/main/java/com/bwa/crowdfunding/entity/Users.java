@@ -50,7 +50,12 @@ public class Users {
     @OneToMany(mappedBy = "users")
     private List<Campaign> campaignList = new ArrayList<>();
 
-    //@OneToMany(mappedBy = "usersid")
-    //private List<Transaction> transaction;
+
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @FieldNameConstants.Exclude
+    @OneToMany(mappedBy = "users")
+    private List<Transaction> transactionList = new ArrayList<>();
+
 
 }
