@@ -29,14 +29,14 @@ public class UsersDao implements CrudRepository<Users, Integer> {
 
     @Override
     public Users update(Users value) throws HibernateException {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public boolean removeById(Integer value) throws HibernateException {
 
         //language=HQL
-        String hql = "delete from Users where id_user = :userId";
+        String hql = "delete from Users where iduser = :userId";
         Query<Users> query = this.session.createQuery(hql)
                 .setParameter("userId", value);
         int delete = query.executeUpdate();
@@ -69,4 +69,5 @@ public class UsersDao implements CrudRepository<Users, Integer> {
 
         return resultList;
     }
+
 }

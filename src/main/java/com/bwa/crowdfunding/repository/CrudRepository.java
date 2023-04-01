@@ -8,6 +8,6 @@ public interface CrudRepository<T, PK> extends ReadRepository<T, PK> {
 
     T update(T value) throws HibernateException;
 
-    boolean removeById(PK value) throws HibernateException;
+    boolean removeById(PK value) throws HibernateException; // return value di ganti String
 
 }

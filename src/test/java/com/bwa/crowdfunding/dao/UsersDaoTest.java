@@ -107,7 +107,7 @@ public class UsersDaoTest {
 
         this.session.beginTransaction();
 
-        var id = 4;
+        var id = 100;
         boolean hasil = this.dao.removeById(id);
 
         Assertions.assertNotNull(hasil);

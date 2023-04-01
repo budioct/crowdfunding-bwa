@@ -12,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Entity
+@Builder
 @Table(name = "campaign", schema = "jointable")
 @SequenceGenerator(
         name = "seq_generator_campaign",
