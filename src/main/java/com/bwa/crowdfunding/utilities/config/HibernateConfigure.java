@@ -10,7 +10,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.springframework.stereotype.Component;
 
+@Component
 public class HibernateConfigure {
 
     private static final SessionFactory ourSessionFactory;
@@ -39,9 +41,14 @@ public class HibernateConfigure {
         }
     }
 
-    // access singletone
+    // access singleton
     public static Session getSession() throws HibernateException {
         return ourSessionFactory.openSession();
     }
+
+    public static void shutdownSession() throws HibernateException{
+         ourSessionFactory.close();
+    }
+
 
 }

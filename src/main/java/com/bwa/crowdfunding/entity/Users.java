@@ -2,6 +2,7 @@ package com.bwa.crowdfunding.entity;
 
 import lombok.*;
 import lombok.experimental.FieldNameConstants;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

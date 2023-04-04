@@ -5,13 +5,14 @@ import com.bwa.crowdfunding.repository.CrudRepository;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.NoResultException;
-import javax.swing.text.html.Option;
-import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
+
+@Repository
 public class UsersDao implements CrudRepository<Users, Integer> {
 
     private Session session;

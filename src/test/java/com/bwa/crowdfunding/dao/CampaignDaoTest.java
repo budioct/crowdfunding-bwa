@@ -3,6 +3,7 @@ package com.bwa.crowdfunding.dao;
 import com.bwa.crowdfunding.entity.Campaign;
 import com.bwa.crowdfunding.entity.Users;
 import com.bwa.crowdfunding.utilities.config.HibernateConfigure;
+import com.bwa.crowdfunding.utilities.exception.ResourceNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.junit.jupiter.api.*;
@@ -133,11 +134,19 @@ public class CampaignDaoTest {
         var id = 6; // valid
         //var id = 1; // invalid
         boolean data = this.campaignDao.removeById(id);
+        //Campaign campaign = this.campaignDao.findById(6)
+        //        .orElseThrow(() -> new ResourceNotFoundException("ID tidak ada bro"));
 
         Assertions.assertNotNull(data);
-        Assertions.assertTrue(data);
+        if (data){
+            Assertions.assertTrue(data);
+        } else {
+            Assertions.assertFalse(data);
+        }
+        Assertions.assertEquals(true, data);
+//        Assertions.assertEquals(false, data);
 
-        //log.info("Id campaing: {}", id);
+        log.info("Id campaing: {}", id);
         log.info("status Remove id {}", data);
         //log.info("FindById() {}", campaign);
 

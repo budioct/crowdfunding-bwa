@@ -2,10 +2,12 @@ package com.bwa.crowdfunding.dao;
 
 import com.bwa.crowdfunding.entity.Campaign;
 import com.bwa.crowdfunding.repository.CrudRepository;
+import com.bwa.crowdfunding.utilities.exception.ResourceNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.NoResultException;
 import java.io.Serializable;
@@ -40,7 +42,12 @@ public class CampaignDao implements CrudRepository<Campaign, Integer> {
         String hql = "delete from Campaign where idcampaign = :id";
         Query query = this.session.createQuery(hql)
                 .setParameter("id", value);
-        int data = query.executeUpdate();
+
+        if (query.executeUpdate() > 0){
+            return true;
+        } else {
+            return false;
+        }
 
         // malvin
 //        Optional<Campaign> byId = findById(value);
@@ -58,8 +65,6 @@ public class CampaignDao implements CrudRepository<Campaign, Integer> {
 //            }else {
 //                return false;
 //            }
-
-        return data >= 0 ? true : false;
 
     }
 
