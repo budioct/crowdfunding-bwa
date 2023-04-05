@@ -1,10 +1,16 @@
 package com.bwa.crowdfunding.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.*;
 import lombok.experimental.FieldNameConstants;
-import org.springframework.stereotype.Component;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +27,9 @@ import java.util.List;
         allocationSize = 1,
         sequenceName = "seq_users",
         initialValue = 1)
-public class Users {
+@JsonIgnoreProperties(ignoreUnknown = false)
+@Proxy(lazy = false)
+public class Users implements Serializable{
 
     @Id
     @Column(name = "id_user", nullable = false)
@@ -49,13 +57,16 @@ public class Users {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @FieldNameConstants.Exclude
-    @OneToMany(mappedBy = "users")
+    @Fetch(FetchMode.SELECT) // Changing the fetch profile you can solve the problem
+    @JsonIgnore // akan hidden object campaignList
+    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Campaign> campaignList = new ArrayList<>();
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @FieldNameConstants.Exclude
-    @OneToMany(mappedBy = "users")
+    @JsonIgnore
+    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Transaction> transactionList = new ArrayList<>();
 
 

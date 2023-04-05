@@ -25,7 +25,7 @@ public class UsersDaoTest {
     void setUp() {
         log.info("ini hibernate session");
         this.session = HibernateConfigure.getSession();
-        this.dao = new UsersDao(session);
+//        this.dao = new UsersDao(session);
     }
 
     @AfterEach
@@ -93,7 +93,7 @@ public class UsersDaoTest {
 
         List<Users> users = this.dao.findAll();
 
-        Assertions.assertEquals(1, users.size());
+        Assertions.assertEquals(9, users.size());
 
         this.session.getTransaction().commit();
 

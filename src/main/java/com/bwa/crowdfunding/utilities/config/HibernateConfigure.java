@@ -35,6 +35,8 @@ public class HibernateConfigure {
                     .buildMetadata()
                     .buildSessionFactory();
 
+
+
         } catch (Throwable e) {
             StandardServiceRegistryBuilder.destroy(registry);
             throw new ExceptionInInitializerError(e);

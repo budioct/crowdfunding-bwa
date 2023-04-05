@@ -5,9 +5,12 @@ import com.bwa.crowdfunding.entity.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
+
 @Service
+@Transactional
 public class UsersService {
 
     private UsersDao usersDao;
@@ -17,7 +20,7 @@ public class UsersService {
         this.usersDao = usersDao;
     }
 
-    public List<Users> findAll(){
+    public List<Users> getAllUsers() {
         return this.usersDao.findAll();
     }
 

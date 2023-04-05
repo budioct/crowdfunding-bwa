@@ -1,7 +1,10 @@
 package com.bwa.crowdfunding.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 import lombok.experimental.FieldNameConstants;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -48,13 +51,15 @@ public class Campaign {
     @Column(name = "update_at")
     private LocalDateTime update_at;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_user")
     private Users users;
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @FieldNameConstants.Exclude
+//    @JsonBackReference
+//    @Fetch(FetchMode.JOIN) // Changing the fetch profile you can solve the problem
     @OneToMany(mappedBy = "campaigns")
     private List<Transaction> transactionList = new ArrayList<>();
 

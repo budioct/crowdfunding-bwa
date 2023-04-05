@@ -18,7 +18,7 @@ public class ConvertToJson {
     @Test
     void testConvertToJson() throws JsonProcessingException {
 
-        mapper = ConvertJSON.getObjectMapper();
+        mapper = ConvertJSON.getObjectMapper(); // singleton
 
         Users dika = Users.builder()
                 .name("dika")

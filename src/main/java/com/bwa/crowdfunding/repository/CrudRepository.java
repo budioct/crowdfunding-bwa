@@ -1,6 +1,7 @@
 package com.bwa.crowdfunding.repository;
 
 import org.hibernate.HibernateException;
+import org.springframework.stereotype.Repository;
 
 public interface CrudRepository<T, PK> extends ReadRepository<T, PK> {
 
